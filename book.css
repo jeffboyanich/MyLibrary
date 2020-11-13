@@ -1,0 +1,32 @@
+#libraryDisplay {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    width: 85vw;
+    margin: auto;
+    grid-template-areas: 
+    'titleHd authorHd pagesHd readStatusHd';
+}
+
+#form {
+    display: none;
+}
+
+#form > ul > li {
+    display: block;
+    list-style-type: none;
+}
+
+#newBookBtn {
+    margin-left: 1em;
+    margin-top: 1.1em;
+    margin-bottom: 1.1em;
+}
+
+#pageTitle {
+    width: 10vw;
+}
+
+#pageHeader {
+    display: flex;
+}

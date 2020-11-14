@@ -37,7 +37,7 @@ function submitBookToLibrary(title, author, pages, haveRead) {
 }
 
 function getLibraryFromLocalStorage() {
-    for (i = window.localStorage.length - 1; i >= 0; i--) {
+    for (i = 0; i <= window.localStorage.length - 1; i++) {
         myLibrary.push(JSON.parse(window.localStorage.getItem(`${i}`)));
     }
   window.localStorage.clear();
@@ -73,6 +73,11 @@ function getFormValues() {
     let author = form.author.value;
     let pages = form.pages.value;
     let haveRead = form.readStatus.value;
+    if (haveRead == 'yes') {
+        haveRead = true;
+    } else if (haveRead == 'no') {
+        haveRead = false;
+    }
     submitBookToLibrary(title, author, pages, haveRead);
 }
 const submitBtn = document.getElementById('submitBtn');
@@ -89,45 +94,70 @@ function removeBookFromLibrary(index) {
     window.localStorage.clear();
     render();
 }
+
+function changeReadStatus(index) {
+    if (myLibrary[index].haveRead == false) {
+        myLibrary[index].haveRead = true;
+    }else if (myLibrary[index].haveRead == true) {
+        myLibrary[index].haveRead = false;
+    }
+}
 function render() {
     libraryDisplay.textContent = '';
 
     for (i = myLibrary.length - 1; i >= 0; i--) {
         let newCard = document.createElement('div');
-        newCard.classList.add('bookCard');
+            newCard.classList.add('bookCard');
         let newInfoWrapper = document.createElement('div');
-        newInfoWrapper.classList.add('cardWrapper');
+            newInfoWrapper.classList.add('cardWrapper');
         libraryDisplay.appendChild(newCard);
         let cardTitle = document.createElement('div');
-        cardTitle.classList.add('cardTitle');
-        cardTitle.textContent = myLibrary[i].title;
+            cardTitle.classList.add('cardTitle');
+            cardTitle.textContent = myLibrary[i].title;
         let cardInfo = document.createElement('ul');
-        cardInfo.classList.add('cardInfo');
+            cardInfo.classList.add('cardInfo');
         let authorInfo = document.createElement('li');
-        authorInfo.textContent = 'Author: ' + myLibrary[i].author;
-        cardInfo.appendChild(authorInfo);
-        let pagesInfo = document.createElement('li');
-        pagesInfo.textContent = 'Pages: ' + myLibrary[i].pages;
-        cardInfo.appendChild(pagesInfo);
+            authorInfo.textContent = 'Author: ' + myLibrary[i].author;
+            cardInfo.appendChild(authorInfo);
+            let pagesInfo = document.createElement('li');
+            pagesInfo.textContent = 'Pages: ' + myLibrary[i].pages;
+            cardInfo.appendChild(pagesInfo);
         let readInfo = document.createElement('li');
-        readInfo.textContent = myLibrary[i].haveRead;
-        cardInfo.appendChild(readInfo);
-        newInfoWrapper.appendChild(cardTitle);
-        newInfoWrapper.appendChild(cardInfo);
-        newCard.appendChild(newInfoWrapper);
+            if (myLibrary[i].haveRead == true) {
+                readInfo.textContent = 'Read'
+            } else if (myLibrary[i].haveRead == false) {
+                readInfo.textContent = 'Not read';
+            }
+            cardInfo.appendChild(readInfo);
+            newInfoWrapper.appendChild(cardTitle);
+            newInfoWrapper.appendChild(cardInfo);
+            newCard.appendChild(newInfoWrapper);
         let deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Delete';
-        deleteBtn.classList.add('deleteBtn');
-        deleteBtn.setAttribute('data-index', `${i}`);
-        newCard.appendChild(deleteBtn);
-        window.localStorage.setItem(`${i}`, JSON.stringify(myLibrary[i]));
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.classList.add('deleteBtn');
+            deleteBtn.setAttribute('data-index', `${i}`);
+            newCard.appendChild(deleteBtn);
+        let readButton = document.createElement('button');
+            readButton.textContent = 'Read';
+            readButton.classList.add('readButton');
+            readButton.setAttribute('data-index', `${i}`);
+            newCard.appendChild(readButton);
+            window.localStorage.setItem(`${i}`, JSON.stringify(myLibrary[i]));
       }
       const deleteBtns = document.querySelectorAll('.deleteBtn');
       deleteBtns.forEach(function(button) {
           button.addEventListener('click', function(e) {
               removeBookFromLibrary(e.target.dataset.index);
           })
-      })
+      });
+      const readBtns = document.querySelectorAll('.readButton');
+      readBtns.forEach(function(button) {
+          button.addEventListener('click', function(e) {
+              changeReadStatus(e.target.dataset.index);
+              console.table(myLibrary)
+              render();
+          })
+      }) 
     };
 
 render();

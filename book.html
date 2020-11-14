@@ -34,9 +34,12 @@
                         <input type = 'number' id = 'pages' name = 'pages'>
                     </li>
                     <li>
-                        <label for = 'readStatus'>Have you read it yet?</label>
+                        <p>Have you read it yet?</p>
                         <br>
-                        <input type = 'text' id = 'readStatus' name = 'readStatus'>
+                        <input type = 'radio' id = 'readStatusTrue' name = 'readStatus' value = 'yes'>
+                        <label for = 'readStatusTrue'>Yes</label>
+                        <input type = 'radio' id = 'readStatusFalse' name = 'readStatus' value = 'no'>
+                        <label for = 'readStatusFalse'>No</label>
                     </li>
                 </ul>
                 <button type = 'button' id = 'submitBtn'>Add Book</button>

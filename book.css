@@ -1,32 +1,129 @@
+* {
+    box-sizing: border-box;
+}
+
 #libraryContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
+    grid-gap: 5em;
     width: 85vw;
-    margin: auto;
-    grid-template-areas: 
-    'titleHd authorHd pagesHd readStatusHd';
+    margin-top: 5em;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 #form {
     display: none;
+    text-align: center;
+    width: 25vw;
+    margin: auto;
+    padding: 2em;
+    background-color: rgb(245, 173, 66, 0.7);
+    border-radius: 5px;
+}
+
+#form > ul {
+    padding: 10px 0px;
+    background: rgb(252, 139, 0, 0.7);
+    border-radius: 5px;
 }
 
 #form > ul > li {
     display: block;
     list-style-type: none;
+    padding-bottom: 10px;
 }
 
 #newBookBtn {
     margin-left: 1em;
-    margin-top: 1.1em;
-    margin-bottom: 1.1em;
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
 
 #pageTitle {
-    width: 10vw;
+    color: white;
+    max-width: 15vw;
+    font-size: 3rem;
+    font-family: 'Nunito', sans-serif;
 }
 
 #pageHeader {
     display: flex;
+    margin-left: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    left: 0px;
+    right: 0px;
+    padding-left: 10px;
+    background-color:rgb(123, 182, 227, 0.8);
+    border-radius: 5px;
+}
+
+.bookCard {
+    border: none;
+    background-color: rgb(245, 173, 66, 0.7);
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Noto Sans JP';
+    height: 20rem;
+}
+
+
+.cardTitle {
+    line-height: 1.5em;
+    margin: 1rem;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: rgb(235, 83, 52, 0.7);
+}
+
+.deleteBtn {
+    margin: ;
+}
+
+body {
+    display: block;
+}
+
+body::after {
+    content: "";
+    background: url(images/books-1204029_1920.jpg);
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1; 
+
+}
+
+.cardInfo {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+}
+
+.cardWrapper > ul{
+    list-style-type: none;
+}
+
+.cardInfo {
+    padding: 0px;
+}
+
+.cardWrapper {
+    background-color: rgb(235, 107, 52, 0.7);
+    height: 75%;
+    border-radius: 5px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 0.25rem;
+}
+
+#container {
+    margin-top: 150px;
 }

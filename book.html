@@ -4,31 +4,38 @@
         <meta charset="utf-8">
         <title> MyLibrary </title>
         <link rel="stylesheet" href ="book.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Nunito:wght@800&display=swap');
+        </style>
     </head>
     <body>
+        <div id = 'pageHeader'>
+            <h1 id = 'pageTitle'>MyLibrary</h1><button id = 'newBookBtn'>Add A New Book</button>
+        </div>
         <div id = 'container'>
-          <div id = 'pageHeader'>
-              <h1 id = 'pageTitle'>MyLibrary</h1><button id = 'newBookBtn'>Add A New Book</button>
-          </div>
           <div id = 'libraryContainer'>
-              
+
           </div>
             <form id = 'form'>
                 <ul>
                     <li>
                         <label for = 'title'>What is the title of the book?</label>
+                        <br>
                         <input type = 'text' id = 'title' name = 'title'>
                     </li>
                     <li>
                         <label for = 'author'>Who is the book's author?</label>
+                        <br>
                         <input type = 'text' id = 'author' name = 'author'>
                     </li>
                     <li>
                         <label for = 'pages'>How many pages does it have?</label>
+                        <br>
                         <input type = 'number' id = 'pages' name = 'pages'>
                     </li>
                     <li>
                         <label for = 'readStatus'>Have you read it yet?</label>
+                        <br>
                         <input type = 'text' id = 'readStatus' name = 'readStatus'>
                     </li>
                 </ul>
